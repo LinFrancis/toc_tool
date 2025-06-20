@@ -57,7 +57,7 @@ if st.session_state.language is None:
     selected = st.selectbox("🌐 Select language", list(LANGUAGE_SHEETS.keys()))
     if selected:
         st.session_state.language = selected
-        st.experimental_rerun()
+        st.rerun()
     st.stop()
 
 selected_language = st.session_state.language
