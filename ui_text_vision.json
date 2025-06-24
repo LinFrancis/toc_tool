@@ -1,0 +1,42 @@
+{
+  "English": {
+    "title": "🌍 Envisioning a Sustainable World",
+    "intro": "This tool guides you through a participatory visioning process inspired by Dr. Donella Meadows.",
+    "intro_text_2": "Please reflect deeply on each question before moving to the next."
+  },
+  "Spanish": {
+    "title": "🌍 Visualizando un Mundo Sostenible",
+    "intro": "Esta herramienta te guía en un proceso participativo de visión inspirado en la Dra. Donella Meadows.",
+    "intro_text_2": "Por favor, reflexiona profundamente sobre cada pregunta antes de avanzar a la siguiente."
+  },
+  "Mandarin Chinese": {
+    "title": "🌍 展望一个可持续的世界",
+    "intro": "本工具引导您参与一个受Donella Meadows博士启发的愿景塑造过程。",
+    "intro_text_2": "在进入下一个问题之前，请认真思考每一个问题。"
+  },
+  "Hindi": {
+    "title": "🌍 एक सतत विश्व की कल्पना",
+    "intro": "यह उपकरण आपको डॉ. डोनेला मीडोज़ द्वारा प्रेरित एक सहभागिता दृष्टिकोण प्रक्रिया में मार्गदर्शन करता है।",
+    "intro_text_2": "कृपया प्रत्येक प्रश्न पर गहराई से चिंतन करें, फिर अगले पर जाएँ।"
+  },
+  "Arabic": {
+    "title": "🌍 تصوّر عالم مستدام",
+    "intro": "تُرشدك هذه الأداة خلال عملية رؤيوية تشاركية مستوحاة من الدكتورة دونيلا ميدوز.",
+    "intro_text_2": "يرجى التفكير بعمق في كل سؤال قبل الانتقال إلى التالي."
+  },
+  "French": {
+    "title": "🌍 Imaginer un monde durable",
+    "intro": "Cet outil vous guide à travers un processus participatif de vision inspiré par Dr Donella Meadows.",
+    "intro_text_2": "Prenez le temps de réfléchir à chaque question avant de passer à la suivante."
+  },
+  "Portuguese": {
+    "title": "🌍 Visualizando um Mundo Sustentável",
+    "intro": "Esta ferramenta guia você por um processo participativo de visão inspirado em Donella Meadows.",
+    "intro_text_2": "Reflita profundamente sobre cada pergunta antes de seguir adiante."
+  },
+  "Swahili": {
+    "title": "🌍 Kuona Maono ya Dunia Endelevu",
+    "intro": "Zana hii inakuongoza katika mchakato wa maono ya ushirikiano uliotokana na Donella Meadows.",
+    "intro_text_2": "Tafadhali tafakari kwa kina kila swali kabla ya kuendelea."
+  }
+}
