@@ -1,0 +1,90 @@
+{
+  "English": {
+    "footer_note": "Done by Francis Mason. Any question reach me at francis.mason@gmail.com",
+    "form_title": "📬 Send me a message",
+    "name": "Your Name",
+    "email": "Your Email",
+    "subject": "Subject",
+    "content": "Message",
+    "submit": "Send",
+    "success": "✅ Message sent successfully! Here's what you submitted:",
+    "invalid_email": "Please enter a valid email address."
+  },
+  "Spanish": {
+    "footer_note": "Hecho por Francis Mason. Para consultas, escribe a francis.mason@gmail.com",
+    "form_title": "📬 Envíame un mensaje",
+    "name": "Tu nombre",
+    "email": "Tu correo electrónico",
+    "subject": "Asunto",
+    "content": "Mensaje",
+    "submit": "Enviar",
+    "success": "✅ ¡Mensaje enviado con éxito! Esto es lo que enviaste:",
+    "invalid_email": "Por favor, introduce un correo electrónico válido."
+  },
+  "French": {
+    "footer_note": "Réalisé par Francis Mason. Pour toute question, contactez francis.mason@gmail.com",
+    "form_title": "📬 Envoyez-moi un message",
+    "name": "Votre nom",
+    "email": "Votre e-mail",
+    "subject": "Sujet",
+    "content": "Message",
+    "submit": "Envoyer",
+    "success": "✅ Message envoyé avec succès ! Voici ce que vous avez envoyé :",
+    "invalid_email": "Veuillez entrer une adresse e-mail valide."
+  },
+  "Portuguese": {
+    "footer_note": "Feito por Francis Mason. Qualquer dúvida escreva para francis.mason@gmail.com",
+    "form_title": "📬 Envie-me uma mensagem",
+    "name": "Seu nome",
+    "email": "Seu e-mail",
+    "subject": "Assunto",
+    "content": "Mensagem",
+    "submit": "Enviar",
+    "success": "✅ Mensagem enviada com sucesso! Aqui está o que você enviou:",
+    "invalid_email": "Por favor, insira um endereço de e-mail válido."
+  },
+  "Mandarin Chinese": {
+    "footer_note": "由 Francis Mason 制作。如有问题，请联系 francis.mason@gmail.com",
+    "form_title": "📬 给我留言",
+    "name": "你的名字",
+    "email": "你的邮箱",
+    "subject": "主题",
+    "content": "内容",
+    "submit": "发送",
+    "success": "✅ 消息已成功发送！这是您提交的内容：",
+    "invalid_email": "请输入有效的电子邮件地址。"
+  },
+  "Hindi": {
+    "footer_note": "फ्रांसिस मेसन द्वारा निर्मित। कोई प्रश्न हो तो francis.mason@gmail.com पर संपर्क करें।",
+    "form_title": "📬 मुझे संदेश भेजें",
+    "name": "आपका नाम",
+    "email": "आपका ईमेल",
+    "subject": "विषय",
+    "content": "संदेश",
+    "submit": "भेजें",
+    "success": "✅ संदेश सफलतापूर्वक भेजा गया! आपने यह भेजा:",
+    "invalid_email": "कृपया एक मान्य ईमेल पता दर्ज करें।"
+  },
+  "Arabic": {
+    "footer_note": "أنجزه فرانسيس ميسون. لأي استفسار راسلني على francis.mason@gmail.com",
+    "form_title": "📬 أرسل لي رسالة",
+    "name": "اسمك",
+    "email": "بريدك الإلكتروني",
+    "subject": "الموضوع",
+    "content": "الرسالة",
+    "submit": "إرسال",
+    "success": "✅ تم إرسال الرسالة بنجاح! هذا ما أرسلته:",
+    "invalid_email": "يرجى إدخال عنوان بريد إلكتروني صالح."
+  },
+  "Swahili": {
+    "footer_note": "Imetengenezwa na Francis Mason. Maswali yoyote nitumie kwa francis.mason@gmail.com",
+    "form_title": "📬 Nitumie ujumbe",
+    "name": "Jina lako",
+    "email": "Barua pepe yako",
+    "subject": "Kichwa",
+    "content": "Ujumbe",
+    "submit": "Tuma",
+    "success": "✅ Ujumbe umetumwa kikamilifu! Hivi ndivyo ulivyotuma:",
+    "invalid_email": "Tafadhali weka anwani halali ya barua pepe."
+  }
+}

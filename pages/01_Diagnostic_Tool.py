@@ -20,6 +20,26 @@ LANGUAGE_CODES = {
 
 st.set_page_config(page_title="📋 Theory of Change Diagnostic Quiz", layout="wide")
 
+st.markdown(
+    """
+    <style>
+    section[data-testid="stSidebar"] .css-ng1t4o {
+        padding-top: 3.5rem;  /* push space for header */
+    }
+    div[data-testid="stSidebarNav"]::before {
+        content: "🌱 Theory of Change App";
+        display: block;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #29522a;
+        margin: 0 1.5rem 1rem 1.5rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # --- LOAD UI TEXT ---
 with open("ui_text.json", "r", encoding="utf-8") as f:
     UI_TEXT = json.load(f)
@@ -304,3 +324,9 @@ if not show_summary_only:
     st.dataframe(visual_map, use_container_width=True)
     st.markdown(ui.get("final_disclaimer", "This report is for reflection and internal use."))
 
+
+
+from contact_me import render_footer
+
+# at the very end of the page
+render_footer(language=selected_language)

@@ -41,7 +41,26 @@ TERM_LOOKUP = {
 }
 
 # --- PAGE SETTINGS ---
-st.set_page_config(page_title="ToC Explorer", layout="wide")
+st.set_page_config(page_title="Theory of Change App", layout="wide")
+
+st.markdown(
+    """
+    <style>
+    section[data-testid="stSidebar"] .css-ng1t4o {
+        padding-top: 3.5rem;  /* push space for header */
+    }
+    div[data-testid="stSidebarNav"]::before {
+        content: "🌱 Theory of Change App";
+        display: block;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #29522a;
+        margin: 0 1.5rem 1rem 1.5rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # --- Load UI text ---
 with open("ui_text.json", "r", encoding="utf-8") as f:
@@ -88,6 +107,8 @@ client = gspread.authorize(credentials)
 st.title(ui["title"])
 st.markdown(ui["intro"])
 st.markdown(f"🪴 **{ui['intro_text_2']}**")
+st.markdown(f"<div style='font-size:1.03rem; margin-top:0.5rem; color:#444;'>{ui['intro_home']}</div>", unsafe_allow_html=True)
+
 
 # --- SHOW ToC DEFINITION using position ---
 glossary_data = load_worksheet("definitions")[1:]
@@ -239,3 +260,7 @@ with st.sidebar:
     )
 
 
+from contact_me import render_footer
+
+# at the very end of the page
+render_footer(language=selected_language)

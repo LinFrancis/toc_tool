@@ -7,6 +7,8 @@ from datetime import datetime
 from io import BytesIO
 import random
 
+
+
 # --- CONFIGURATION ---
 SHEET_ID = "1q_FFt5BUF1z7w2NOO960elmPiUNbO76T9r6F0Bi2tJ0"
 GAME_SHEET = "tomato_game_results"
@@ -57,6 +59,28 @@ if "unlocked_varieties" not in st.session_state:
 
 # --- PAGE LAYOUT ---
 st.set_page_config(page_title=GAME_TEXT[st.session_state.language]["title"], layout="wide")
+
+
+st.markdown(
+    """
+    <style>
+    section[data-testid="stSidebar"] .css-ng1t4o {
+        padding-top: 3.5rem;  /* push space for header */
+    }
+    div[data-testid="stSidebarNav"]::before {
+        content: "🌱 Theory of Change App";
+        display: block;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #29522a;
+        margin: 0 1.5rem 1rem 1.5rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 ui = GAME_TEXT[st.session_state.language]
 plant_palette = {
     "easy": "#6ec47b",
@@ -554,3 +578,9 @@ if st.session_state.get("harvest_loss", False) and st.session_state.get("just_fa
         if st.button(ui.get("stop_and_publish", "Stop & Publish")):
             st.session_state["harvest_loss"] = False
             st.rerun()
+
+
+# from contact_me import render_footer
+
+# # at the very end of the page
+# render_footer(language=selected_language)

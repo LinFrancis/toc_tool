@@ -33,6 +33,26 @@ LANGUAGE_ORDER = {
 # --- PAGE SETTINGS ---
 st.set_page_config(page_title="ToC Explorer", layout="wide")
 
+st.markdown(
+    """
+    <style>
+    section[data-testid="stSidebar"] .css-ng1t4o {
+        padding-top: 3.5rem;  /* push space for header */
+    }
+    div[data-testid="stSidebarNav"]::before {
+        content: "🌱 Theory of Change App";
+        display: block;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #29522a;
+        margin: 0 1.5rem 1rem 1.5rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # --- Load UI text ---
 with open("ui_text_vision.json", "r", encoding="utf-8") as f:
     UI_TEXT = json.load(f)
@@ -91,38 +111,80 @@ client = gspread.authorize(credentials)
 
 # --- TITLE AND INTRO ---
 st.markdown(f"<h1 style='color:#29522a;'>{ui['title']}</h1>", unsafe_allow_html=True)
-st.markdown(f"<div style='font-size:1.05rem; color:#3a3a3a; margin-bottom:1rem;'>{ui['intro']}</div>", unsafe_allow_html=True)
+# st.markdown(f"<div style='font-size:1.05rem; color:#3a3a3a; margin-bottom:1rem;'>{ui['intro']}</div>", unsafe_allow_html=True)
 st.markdown(f"<div style='font-size:1.1rem; color:#548e68; font-weight:bold;'>🪴 {ui['intro_text_2']}</div>", unsafe_allow_html=True)
+
 
 # --- LOAD and DISPLAY Envisioning Questions based on language ---
 raw_data = load_worksheet("guiding_visions")
-header = raw_data[1]  # Segunda fila: encabezados reales
-rows = raw_data[2:]   # A partir de tercera fila: contenido
+header = raw_data[1]  # Second row = column headers
+rows = raw_data[2:]   # Data starts from third row (index 2)
 
-# Obtener índices de columnas correspondientes al idioma seleccionado
+# Column indices for the selected language
 subtitle_col, question_col = LANGUAGE_ORDER[selected_language]
 
-# Agrupar preguntas por subtítulo
-grouped_questions = {}
-for row in rows:
-    if len(row) > max(subtitle_col, question_col):
-        subtitle = row[subtitle_col].strip()
-        question = row[question_col].strip()
-        if subtitle and question:
-            grouped_questions.setdefault(subtitle, []).append(question)
+# Group 1: Facilitator Guide 
+facilitator_rows = rows[0:7]
+# Group 2: Participant Questions 
+participant_rows = rows[7:]
 
-# Mostrar preguntas organizadas por subtítulo con estilo
-for subtitle, questions in grouped_questions.items():
+# Helper function to group questions by subtitle
+def group_questions(data):
+    grouped = {}
+    for row in data:
+        if len(row) > max(subtitle_col, question_col):
+            subtitle = row[subtitle_col].strip()
+            question = row[question_col].strip()
+            if subtitle and question:
+                grouped.setdefault(subtitle, []).append(question)
+    return grouped
+
+# --- FACILITATOR GUIDE ---
+with st.expander("🧭 For Facilitators Only – Guided Instructions", expanded=False):
     st.markdown(
-        f"<div style='background:#e6f2e6; padding:0.8rem 1rem; border-radius:0.6rem; margin:1.2rem 0 0.5rem;'>"
-        f"<span style='font-size:1.2rem; font-weight:600; color:#29522a;'>🌀 {subtitle}</span>"
-        f"</div>", 
+        "<div style='font-size:1.02rem; color:#444; margin-bottom:0.6rem;'>"
+        "These instructions are meant to help facilitators guide a meaningful envisioning exercise. "
+        "They include prompts and reflective steps to set the tone and space for participants."
+        "</div>",
         unsafe_allow_html=True
     )
-    for i, q in enumerate(questions, start=1):
+
+    grouped_facilitator = group_questions(facilitator_rows)
+    for subtitle, questions in grouped_facilitator.items():
         st.markdown(
-            f"<div style='background:#f8fbf8; padding:0.6rem 1rem; margin:0.3rem 0; border-left:4px solid #c7e0c7;'>"
-            f"<strong style='color:#37623d;'>{i}.</strong> {q}"
-            f"</div>",
+            f"<div style='background:#e6f2e6; padding:0.8rem 1rem; border-radius:0.6rem; margin:1.2rem 0 0.5rem;'>"
+            f"<span style='font-size:1.2rem; font-weight:600; color:#29522a;'>🌀 {subtitle}</span>"
+            f"</div>", 
             unsafe_allow_html=True
         )
+        for i, q in enumerate(questions, start=1):
+            st.markdown(
+                f"<div style='background:#f8fbf8; padding:0.6rem 1rem; margin:0.3rem 0; border-left:4px solid #c7e0c7;'>"
+                f"<strong style='color:#37623d;'>{i}.</strong> {q}"
+                f"</div>",
+                unsafe_allow_html=True
+            )
+
+# --- PARTICIPANT QUESTIONS ---
+with st.expander("👥 For All Participants – Visioning Questions", expanded=True):
+    grouped_participant = group_questions(participant_rows)
+    for subtitle, questions in grouped_participant.items():
+        st.markdown(
+            f"<div style='background:#e6f2e6; padding:0.8rem 1rem; border-radius:0.6rem; margin:1.2rem 0 0.5rem;'>"
+            f"<span style='font-size:1.2rem; font-weight:600; color:#29522a;'>🧩 {subtitle}</span>"
+            f"</div>", 
+            unsafe_allow_html=True
+        )
+        for i, q in enumerate(questions, start=1):
+            st.markdown(
+                f"<div style='background:#f8fbf8; padding:0.6rem 1rem; margin:0.3rem 0; border-left:4px solid #c7e0c7;'>"
+                f"<strong style='color:#37623d;'>{i}.</strong> {q}"
+                f"</div>",
+                unsafe_allow_html=True
+            )
+
+
+from contact_me import render_footer
+
+# at the very end of the page
+render_footer(language=selected_language)
