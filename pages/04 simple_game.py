@@ -10,7 +10,7 @@ import random
 SHEET_ID = "1q_FFt5BUF1z7w2NOO960elmPiUNbO76T9r6F0Bi2tJ0"
 COMPONENT_SHEET_PREFIX = "components_"
 
-with open("game_text.json", "r", encoding="utf-8") as f:
+with open("game_text_minimal_multilang.json", "r", encoding="utf-8") as f:
     GAME_TEXT = json.load(f)
 
 LANGUAGES = list(GAME_TEXT.keys())
