@@ -127,6 +127,7 @@ IDX_CLARIFY_PROMPT = 9
 IDX_WHY_IMPORTANT = 10
 IDX_HOW_TO_ADDRESS = 11
 
+st.warning("Game is still under development. Help me make it cool!")
 
 
 
