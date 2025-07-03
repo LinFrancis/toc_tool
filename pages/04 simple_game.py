@@ -10,20 +10,24 @@ import random
 SHEET_ID = "1q_FFt5BUF1z7w2NOO960elmPiUNbO76T9r6F0Bi2tJ0"
 COMPONENT_SHEET_PREFIX = "components_"
 
+# Column index constants
+IDX_COMPONENT = 3
+IDX_DEFINITION = 4
+
 with open("game_text_minimal_multilang.json", "r", encoding="utf-8") as f:
     GAME_TEXT = json.load(f)
 
 LANGUAGES = list(GAME_TEXT.keys())
 
 LANGUAGE_CODES = {
-    "English":      "en",
+    "English": "en",
     "Mandarin Chinese": "zh-CN",
-    "Hindi":        "hi",
-    "Spanish":      "es",
-    "Arabic":       "ar",
-    "French":       "fr",
-    "Portuguese":   "pt",
-    "Swahili":      "sw",
+    "Hindi": "hi",
+    "Spanish": "es",
+    "Arabic": "ar",
+    "French": "fr",
+    "Portuguese": "pt",
+    "Swahili": "sw",
 }
 
 # --- SESSION STATE ---
@@ -46,10 +50,9 @@ credentials = ServiceAccountCredentials.from_json_keyfile_dict(
 )
 client = gspread.authorize(credentials)
 
-# --- LOAD UI TEXT ---
+# --- UI ---
 ui = GAME_TEXT[st.session_state.language]
 
-# --- PAGE ---
 st.set_page_config(page_title=ui["title"], layout="wide")
 st.sidebar.selectbox("🌐 Language", LANGUAGES, index=LANGUAGES.index(st.session_state.language), key="language")
 st.title(ui["title"])
@@ -79,7 +82,7 @@ if st.session_state["in_game"]:
     lang_code = LANGUAGE_CODES.get(st.session_state.language, "en")
     sheet_name = COMPONENT_SHEET_PREFIX + lang_code
     df = load_component_data(sheet_name)
-    df = df.dropna(subset=["Component", "Definition"]).reset_index(drop=True)
+    df = df[df.iloc[:, IDX_COMPONENT].notna() & df.iloc[:, IDX_DEFINITION].notna()].reset_index(drop=True)
 
     n_questions = 6
     if "question_list" not in st.session_state:
@@ -90,13 +93,13 @@ if st.session_state["in_game"]:
 
     if curr_idx < n_questions:
         row = questions.iloc[curr_idx]
-        component = row["Component"]
-        correct_answer = row["Definition"]
+        component = row.iloc[IDX_COMPONENT]
+        correct_answer = row.iloc[IDX_DEFINITION]
 
         st.markdown(f"**{curr_idx + 1}. {component}**")
         st.markdown(f"{correct_answer}")
 
-        pool = df["Definition"].dropna().unique().tolist()
+        pool = df.iloc[:, IDX_DEFINITION].dropna().unique().tolist()
         pool = [x for x in pool if x != correct_answer]
         options = random.sample(pool, 3) + [correct_answer]
         random.shuffle(options)
