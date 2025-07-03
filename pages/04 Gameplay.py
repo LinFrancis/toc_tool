@@ -60,6 +60,7 @@ if "unlocked_varieties" not in st.session_state:
 # --- PAGE LAYOUT ---
 st.set_page_config(page_title=GAME_TEXT[st.session_state.language]["title"], layout="wide")
 
+st.warning("Game is still under development. Help me make it cool!")
 
 st.markdown(
     """
@@ -127,7 +128,7 @@ IDX_CLARIFY_PROMPT = 9
 IDX_WHY_IMPORTANT = 10
 IDX_HOW_TO_ADDRESS = 11
 
-st.warning("Game is still under development. Help me make it cool!")
+
 
 
 
