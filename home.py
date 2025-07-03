@@ -72,8 +72,11 @@ if "language" not in st.session_state:
 
 if st.session_state.language is None:
     st.title("🌍 Welcome!")
-    st.markdown("Please select your language to begin:")
+    st.markdown("Please select your language to begin:*")
     selected = st.selectbox("🌐 Select language", list(LANGUAGE_SHEETS.keys()))
+    st.caption("* Google-translated from English (some parts manually revised)")
+
+    
     if selected:
         st.session_state.language = selected
         st.rerun()
