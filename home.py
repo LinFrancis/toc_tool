@@ -88,7 +88,7 @@ ui = UI_TEXT.get(selected_language, UI_TEXT["English"])
 
 # --- Allow language switch ---
 with st.sidebar:
-    st.markdown("🌐 **Change language**")
+    st.markdown("🌐 **Change language***")
     new_lang = st.selectbox("Language", list(LANGUAGE_SHEETS.keys()), index=list(LANGUAGE_SHEETS.keys()).index(selected_language))
     st.caption("* Google-translated from English (some parts manually revised)")
     if new_lang != selected_language:
